@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Monitoring App</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="header-title">
+        <span class="header-icon">🌤️</span>
+        <div>
+          <h1>Weather Monitoring App</h1>
+          <p class="subtitle">Real-time weather tracking with persistent local history</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="card search-card">
+      <form id="search-form" class="search-form" novalidate>
+        <div class="input-group">
+          <label for="city-input" class="sr-only">Enter city name</label>
+          <input
+            type="text"
+            id="city-input"
+            placeholder="Search city (e.g. London, Tokyo, New York)..."
+            autocomplete="off"
+            required
+          />
+        </div>
+        <button type="submit" id="search-btn" class="btn btn-primary">
+          <span class="btn-text">Search City</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <!-- Status / Feedback Banner (Loading, Error, Success) -->
+      <div id="status-banner" class="status-banner hidden" role="status" aria-live="polite">
+        <span id="status-icon" class="status-icon">ℹ️</span>
+        <span id="status-text" class="status-text">Ready</span>
+      </div>
+    </section>
+
+    <!-- Active City Weather (Hero Display) -->
+    <section class="active-weather-section">
+      <h2 class="section-title">Current Weather</h2>
+      <div id="active-weather-card" class="card active-weather-card">
+        <!-- Rendered dynamically by app.js -->
+        <div class="empty-placeholder">
+          <span class="placeholder-icon">🌍</span>
+          <p>Search for a city above to see live weather metrics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Saved Cities Section -->
+    <section class="saved-cities-section">
+      <div class="saved-header">
+        <div class="saved-title-group">
+          <h2 class="section-title">Saved Cities</h2>
+          <span id="saved-count-badge" class="badge">0</span>
+        </div>
+
+        <!-- Filter Input -->
+        <div class="filter-wrapper">
+          <label for="filter-input" class="sr-only">Filter saved cities</label>
+          <input
+            type="text"
+            id="filter-input"
+            class="filter-input"
+            placeholder="🔍 Filter saved cities..."
+          />
+        </div>
+      </div>
+
+      <!-- Saved Cities Grid / List -->
+      <div id="saved-cities-list" class="saved-cities-grid">
+        <!-- Dynamic city cards or empty state injected here by app.js -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Powered by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo API</a> (No API Key Required). Vanilla JS &bull; LocalStorage &bull; REST API</p>
+    </footer>
+
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
